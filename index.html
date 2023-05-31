@@ -13,19 +13,19 @@
 
     <script>
         const choice = ['Rock', 'Paper', 'Scissors'];
-        // const para = document.querySelector('p');
 
         function getComputerChoice(choice) {
-            return choice[Math.floor(Math.random() * choice.length)]
-            // const randomChoice = Math.floor(Math.random() * choice.length);
-            // const draw = choice[randomChoice];
-            // para.textContent = draw;
+            return choice[Math.floor(Math.random() * choice.length)];
         }
-        console.log(getComputerChoice(choice));
 
         function jankengo(playerSelection, computerSelection) {
-            
+
         }
+        const playerSelection = prompt("Choose your weapon!");
+        const computerSelection = getComputerChoice(choice);
+
+        console.log(playerSelection);
+        console.log(computerSelection);
 
     </script>
 </html>
