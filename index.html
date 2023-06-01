@@ -14,18 +14,35 @@
     <script>
         const choice = ['Rock', 'Paper', 'Scissors'];
 
-        function getComputerChoice(choice) {
+        function getComputerChoice() {
             return choice[Math.floor(Math.random() * choice.length)];
         }
 
         function jankengo(playerSelection, computerSelection) {
-
+            if (playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'paper' ) {
+                return "You Lose! Paper covers Rock"; 
+            } else if (playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'scissors') {
+                return "You Win! Rock beats Scissors";
+            } else if (playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'rock') {
+                return "You Win! Paper covers Rock";
+            } else if (playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'scissors') {
+                return "You Lose! Scissors cuts Paper";
+            } else if (playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'paper') {
+                return "You Win! Scissors cuts Paper";
+            } else if (playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'rock') {
+                return "You Lose! Rock beats Scissors";
+            } else (playerSelection.toLowerCase() === computerSelection.toLowerCase()) 
+                return "It's a Draw! Play Again"
         }
-        const playerSelection = prompt("Choose your weapon!");
-        const computerSelection = getComputerChoice(choice);
 
+        let playerSelection = prompt("Choose your weapon!");
+        let computerSelection = getComputerChoice();
+        console.log(jankengo(playerSelection, computerSelection));
         console.log(playerSelection);
         console.log(computerSelection);
 
+        function game() {
+
+        }
     </script>
 </html>
