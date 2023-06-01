@@ -9,6 +9,7 @@
     </head>
 
     <body>
+        <h1>JAN-KEN-GO</h1>
     </body>
 
     <script>
@@ -31,15 +32,18 @@
                 return "You Win! Scissors cuts Paper";
             } else if (playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'rock') {
                 return "You Lose! Rock beats Scissors";
-            } else (playerSelection.toLowerCase() === computerSelection.toLowerCase()) 
+            } else if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
                 return "It's a Draw! Play Again"
+            } else {
+                return "Please choose a proper weapon!"
+            }
         }
 
         let playerSelection = prompt("Choose your weapon!");
         let computerSelection = getComputerChoice();
-        console.log(jankengo(playerSelection, computerSelection));
         console.log(playerSelection);
         console.log(computerSelection);
+        console.log(jankengo(playerSelection, computerSelection));
 
         function game() {
 
