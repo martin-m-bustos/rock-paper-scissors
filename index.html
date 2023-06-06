@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rock-Paper-Scissors</title>
         <link rel="stylesheet" href="styles.css">
+        <link rel="javascript" href="script.js">
     </head>
 
     <body>
@@ -16,37 +17,54 @@
         const choice = ['Rock', 'Paper', 'Scissors'];
 
         function getComputerChoice() {
-            return choice[Math.floor(Math.random() * choice.length)];
+            return choice[Math.floor(Math.random() * choice.length)]; 
         }
 
         function jankengo(playerSelection, computerSelection) {
-            if (playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'paper' ) {
+            if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
+                return "It's a Draw! Play Again"
+            } else if (playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'paper' ) {
+                compWin += 1;
                 return "You Lose! Paper covers Rock"; 
             } else if (playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'scissors') {
-                return "You Win! Rock beats Scissors";
+                playerWin += 1;
+                return "You Win! Rock smashes Scissors";
             } else if (playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'rock') {
+                playerWin += 1;
                 return "You Win! Paper covers Rock";
             } else if (playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'scissors') {
+                compWin += 1;
                 return "You Lose! Scissors cuts Paper";
             } else if (playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'paper') {
+                playerWin += 1;
                 return "You Win! Scissors cuts Paper";
             } else if (playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'rock') {
-                return "You Lose! Rock beats Scissors";
-            } else if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-                return "It's a Draw! Play Again"
+                compWin += 1;
+                return "You Lose! Rock smashes Scissors";
             } else {
                 return "Please choose a proper weapon!"
             }
         }
 
-        let playerSelection = prompt("Choose your weapon!");
-        let computerSelection = getComputerChoice();
-        console.log(playerSelection);
-        console.log(computerSelection);
-        console.log(jankengo(playerSelection, computerSelection));
+        var playerWin = 0;
+        var compWin = 0;
 
         function game() {
-
+            const player = prompt("Choose your weapon!");
+            let computer = getComputerChoice();
+            jankengo(player, computer);
+            // console.log(playerSelection);
+            // console.log(computerSelection);
+            console.log(player);
+            console.log(computer);
+            console.log(playerWin);
+            console.log(compWin);
+            console.log(jankengo(player, computer));
         }
+
+        while (playerWin < 5 && compWin < 5) {
+            game();
+        }
+
     </script>
 </html>
