@@ -6,7 +6,7 @@ The function will compare the user's choice against the computer's random choice
 If there is a tie, the function will return play again 
 Initiate a counter and initialize to zero
 If there is a clear winner, print the winner and increment counter by 1 
-The game will play for 5 rounds
+The game will play until someone wins 5 rounds
 
 
 
