@@ -6,65 +6,83 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rock-Paper-Scissors</title>
         <link rel="stylesheet" href="styles.css">
-        <link rel="javascript" href="script.js">
     </head>
 
     <body>
-        <h1>JAN-KEN-GO</h1>
+        <h1>JAN-KEN-GUU</h1>
     </body>
 
     <script>
-        const choice = ['Rock', 'Paper', 'Scissors'];
+        const choice = ['rock', 'paper', 'scissors'];
 
         function getComputerChoice() {
             return choice[Math.floor(Math.random() * choice.length)]; 
         }
 
-        function jankengo(playerSelection, computerSelection) {
-            if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
-                return "It's a Draw! Play Again"
-            } else if (playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'paper' ) {
-                compWin += 1;
+        function jankengu(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase();
+            // Added variable 'winner' for each scenario rather than just on wins (caused counting issue)
+            if (playerSelection === computerSelection) {
+                winner = 'draw';
+                return "It's a Draw! Play Again";
+            } else if (playerSelection === 'rock' && computerSelection === 'paper') {
+                winner = 'comp';
                 return "You Lose! Paper covers Rock"; 
-            } else if (playerSelection.toLowerCase() === 'rock' && computerSelection.toLowerCase() === 'scissors') {
-                playerWin += 1;
+            } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+                winner = 'play';
                 return "You Win! Rock smashes Scissors";
-            } else if (playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'rock') {
-                playerWin += 1;
+            } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+                winner = 'play';
                 return "You Win! Paper covers Rock";
-            } else if (playerSelection.toLowerCase() === 'paper' && computerSelection.toLowerCase() === 'scissors') {
-                compWin += 1;
+            } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+                winner = 'comp';
                 return "You Lose! Scissors cuts Paper";
-            } else if (playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'paper') {
-                playerWin += 1;
+            } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+                winner = 'play';
                 return "You Win! Scissors cuts Paper";
-            } else if (playerSelection.toLowerCase() === 'scissors' && computerSelection.toLowerCase() === 'rock') {
-                compWin += 1;
+            } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+                winner = 'comp';
                 return "You Lose! Rock smashes Scissors";
             } else {
-                return "Please choose a proper weapon!"
+                return "Please choose a proper weapon";
+                winner = 'draw';
             }
         }
-
-        var playerWin = 0;
-        var compWin = 0;
+        // Initialize win counter
+        let playerWin = 0;
+        let compWin = 0;
 
         function game() {
-            const player = prompt("Choose your weapon!");
+            let player = prompt("Choose your weapon!");
             let computer = getComputerChoice();
-            jankengo(player, computer);
-            // console.log(playerSelection);
-            // console.log(computerSelection);
+            jankengu(player, computer);
+            // Fixes previous counting issue for back to back wins with same choice and draws (no count)
+            if (winner === 'play') {
+                playerWin++;
+            } else if (winner === 'comp') {
+                compWin++;
+            } else {
+                playerWin = playerWin + 0;
+                compWin = compWin + 0;
+            }
             console.log(player);
             console.log(computer);
             console.log(playerWin);
             console.log(compWin);
-            console.log(jankengo(player, computer));
+            console.log(winner);
+            console.log(jankengu(player, computer));
         }
 
+        // Plays game until one side reaches 5 wins
         while (playerWin < 5 && compWin < 5) {
             game();
         }
 
+        // Prints winner after one side reaches 5
+        if (playerWin === 5) {
+                console.log(`Game Over. You Win 5 - ${compWin}!`);
+            } else if (compWin === 5) {
+                console.log(`Game Over. You Lose ${playerWin} - 5`);
+            }
     </script>
 </html>
