@@ -44,8 +44,8 @@
                 winner = 'comp';
                 return "You Lose! Rock smashes Scissors";
             } else {
+                winner = 'none';
                 return "Please choose a proper weapon";
-                winner = 'draw';
             }
         }
         // Initialize win counter
@@ -61,7 +61,7 @@
                 playerWin++;
             } else if (winner === 'comp') {
                 compWin++;
-            } else {
+            } else if (winner === 'none' || winner === 'draw') {
                 playerWin = playerWin + 0;
                 compWin = compWin + 0;
             }
