@@ -61,9 +61,8 @@
                 playerWin++;
             } else if (winner === 'comp') {
                 compWin++;
-            } else if (winner === 'none' || winner === 'draw') {
-                playerWin = playerWin + 0;
-                compWin = compWin + 0;
+            } else {
+                // Neither score will not go up in case of draw or inappropriate input
             }
             console.log(player);
             console.log(computer);
